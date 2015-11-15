@@ -24,6 +24,21 @@ SOFTWARE.
 '''
 from __future__ import absolute_import
 
+from . import nicovideo
+from .nicovideo import (
+    Niconico,
+    Movie,
+    User,
+    get_getthumbinfo,
+    get_thumb,
+    get_getflv,
+    get_getmarquee,
+    get_getrelation,
+    get_msg,
+    get_mylist,
+    get_uploaded,
+)
+
 
 VERSION = (0, 0, 1, None)
 
@@ -32,14 +47,18 @@ if VERSION[3]:
     __version__ += '.{3:d}'.format(*VERSION)
 
 
-from . import nicovideo
-from .nicovideo import (
-    NMovie,
-)
-
-
 __all__ = (
     '__version__',
     'nicovideo',
-    'NMovie',
+    'Niconico',
+    'Movie',
+    'User',
+    'get_getthumbinfo',
+    'get_thumb',
+    'get_getflv',
+    'get_getmarquee',
+    'get_getrelation',
+    'get_msg',
+    'get_mylist',
+    'get_uploaded',
 )
