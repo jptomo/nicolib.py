@@ -4,31 +4,53 @@ from .util import xml2dict
 from ._compat import urlopen
 
 
-class NMovie(object):
+class Niconico():
+    def login(self):
+        '''TODO:
+        '''
+
+    def logout(self):
+        '''TODO:
+        '''
+
+    def search(self):
+        '''TODO: implement: http://search.nicovideo.jp/docs/api/snapshot.html
+        '''
+
+
+class Movie(object):
+    '''TODO: implement: http://res.nimg.jp/js/nicoapi.js
+    '''
+
     def __init__(self, movie_id):
         self.movie_id = movie_id
         self._info = {}
 
-    @staticmethod
-    def _get_info(movie_id):
-        information = {}
-        res = get_getthumbinfo(movie_id)
-        for elem in res['children'][0]['children']:
-            tag = elem.pop('tag')
-            information[tag] = elem
-        return information
+    def get_owner(self):
+        '''TODO:
+        '''
 
-    def get_info(self):
+    def _get_info(self):
         if not self._info:
-            self._info = self._get_info(self.movie_id)
+            res = get_getthumbinfo(self.movie_id)
+            for elem in res['children'][0]['children']:
+                tag = elem.pop('tag')
+                self._info[tag] = elem
         return self._info
 
 
-class NUser(object):
+class User(object):
+    '''TODO: implement: http://res.nimg.jp/js/nicoapi.js
+    '''
+
     def __init__(self, user_id):
         self.user_id = user_id
 
     def get_uploaded(self):
+        '''TODO:
+        '''
+
+    def get_mylists(self):
         pass
 
 
