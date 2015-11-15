@@ -22,15 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 '''
+from __future__ import absolute_import
 
 
 VERSION = (0, 0, 1, None)
 
-__version__ = '{0:d}.{1:d}.{2:d}'.format(VERSION)
+__version__ = '{0:d}.{1:d}.{2:d}'.format(*VERSION)
 if VERSION[3]:
-    __version__ += '.{3:d}'.format(VERSION)
+    __version__ += '.{3:d}'.format(*VERSION)
+
+
+from . import nicovideo
+from .nicovideo import (
+    NMovie,
+)
 
 
 __all__ = (
     '__version__',
+    'nicovideo',
+    'NMovie',
 )
