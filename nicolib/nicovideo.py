@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
-from .util import xml2dict
 from ._compat import urlopen
+from ._util import xml2dict
 
 
 class Niconico():
@@ -13,9 +13,10 @@ class Niconico():
         '''TODO:
         '''
 
-    def search(self):
-        '''TODO: implement: http://search.nicovideo.jp/docs/api/snapshot.html
-        '''
+
+def search(self):
+    '''TODO: implement: http://search.nicovideo.jp/docs/api/snapshot.html
+    '''
 
 
 class Movie(object):
@@ -92,14 +93,36 @@ def get_getflv(movie_id):
 
 
 def get_getmarquee(movie_id):
-    pass
+    '''
+    urllib2.HTTPError: HTTP Error 404: Not Found
+    '''
+    try:
+        _response = urlopen(
+            'http://flapi.nicovideo.jp/api/getmarquee?{movie_id:s}'
+            .format(movie_id=movie_id))
+        return _response.read().decode('utf-8')
+    finally:
+        _response.close()
 
 
-def get_getrelation():
-    pass
+def get_getrelation(movie_id, page=1):
+    '''
+    don't run ?
+    '''
+    try:
+        _response = urlopen(
+            'http://flapi.nicovideo.jp/api/getrelation?' +
+            ('page={page:d}&video={movie_id:s}'
+             .format(page=page, movie_id=movie_id)))
+        return _response.read().decode('utf-8')
+    finally:
+        _response.close()
 
 
 def get_msg(movie_id):
+    '''
+    https://blog.nanoway.net/web/nicovideo-comment-api
+    '''
     pass
 
 
